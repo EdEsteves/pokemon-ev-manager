@@ -1,0 +1,11 @@
+.Footer {
+  margin-top: 3em;
+  padding: 1.5em 1em;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+.Footer__credits {
+  margin: 0;
+  font-size: .8em;
+}
