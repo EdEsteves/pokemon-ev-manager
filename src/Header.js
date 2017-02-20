@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <header className="Header">
-        <h1 className="Header__title">Pokémon EV Manager</h1>
+        <h1 className="Header__title">EV Manager</h1>
       </header>
     );
   }
