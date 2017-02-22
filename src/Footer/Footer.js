@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Footer.css';
 
-const pkgJson = require('../package.json');
+const pkgJson = require('../../package.json');
 
 class Footer extends Component {
   render() {
