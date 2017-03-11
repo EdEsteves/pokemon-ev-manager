@@ -16,7 +16,7 @@ class About extends Component {
         <p className="About__text">It's for me and you and everyone who likes to play Pokémon and wants to train them properly.</p>
         <p className="About__text">You can use any training method you want, but I do recommend you to use the Super Training, introduced in X/Y generation.</p>
 
-        <h3 className="About__subtitle">I'm a developer and like to contribute to this project. How can I do that?</h3>
+        <h3 className="About__subtitle">I'm a developer and want to contribute to this project. How can I do that?</h3>
         <ol className="About__list">
           <li className="About__item">Fork <a href="//github.com/guilhermemarconi/pokemon-ev-management" className="About__anchor" target="_blank">this repo</a>;</li>
           <li className="About__item">Code as much as you want; 🤘</li>
