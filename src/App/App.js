@@ -77,12 +77,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App primary-component">
-        <Header />
-        <div className="main-content">
-          App
-        </div>
-        <Footer />
+      <div className="App main-component">
+        App
       </div>
     );
   }
