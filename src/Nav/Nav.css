@@ -1,5 +1,5 @@
 .Nav {
-  background: #ee1515;
+  background: #f0f0f0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; }
 
@@ -18,11 +18,18 @@
   display: block; }
 
 .Nav__item.is-active {
+  color: #fff;
   background: #f00; }
 
 .Nav__anchor {
   display: block;
   padding: 1em;
-  color: #fff;
+  color: #222224;
   text-decoration: none;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: all .2s ease; }
+
+@media screen and (min-width: 62em) {
+  .Nav__anchor:hover {
+    color: #fff;
+    background: #ee1515; } }

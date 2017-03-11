@@ -1,7 +1,7 @@
 @import '../scss/all';
 
 .Nav {
-  background: $c-red-alt;
+  background: $c-gray-light;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
@@ -13,6 +13,7 @@
     display: block;
 
     &.is-active {
+      color: $c-white;
       background: $c-red;
     }
   }
@@ -20,8 +21,16 @@
   &__anchor {
     display: block;
     padding: 1em;
-    color: $c-white;
+    color: $c-gray-dark;
     text-decoration: none;
     cursor: pointer;
+    transition: all .2s ease;
+
+    @media screen and (min-width: $v-md) {
+      &:hover {
+        color: $c-white;
+        background: $c-red-alt;
+      }
+    }
   }
 }

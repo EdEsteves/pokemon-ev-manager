@@ -12,11 +12,11 @@ class Header extends Component {
 
   toggleNav(e) {
     e.preventDefault();
-    this.slideout.toggle();
+    window.sideNav.toggle();
   }
 
   componentDidMount() {
-    this.slideout = new Slideout({
+    window.sideNav = new Slideout({
       'panel': document.getElementById('content'),
       'menu': document.getElementById('navigation'),
       'padding': 256,
@@ -25,7 +25,7 @@ class Header extends Component {
   }
 
   componentWillUnmount() {
-    this.slideout.destroy();
+    window.sideNav.destroy();
   }
 
   render() {

@@ -16,11 +16,10 @@ class Nav extends Component {
     e.preventDefault();
     const pathname = e.currentTarget.dataset.href;
     this.context.router.transitionTo(pathname);
+    window.sideNav.toggle();
   }
 
   render() {
-    console.log(this.context);
-
     return (
       <nav className="Nav" id="navigation">
         <ul className="Nav__list unstyled">
