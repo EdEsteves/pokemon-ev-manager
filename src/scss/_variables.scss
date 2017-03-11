@@ -1,0 +1,41 @@
+// =========================================================
+//
+//  PROJECT SCSS VARIABLES
+//  ---------
+//
+//  Pay attention on prefixes when adding new variables
+//
+//  Colors: $c-
+//  Fonts: $f-
+//  Viewport: $v-
+//
+//  Hamburger variables are third party variables, so leave
+//  it as is
+//
+// =========================================================
+
+$c-black: #000;
+$c-white: #fff;
+$c-red: #f00;
+$c-red-alt: #ee1515;
+$c-gray-dark: #222224;
+$c-gray-light: #f0f0f0;
+$c-404: #fe6811;
+
+$f-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+$v-xs: 25em;
+$v-sm: 48em;
+$v-md: 62em;
+$v-lg: 75em;
+
+$hamburger-padding-x: 15px !default;
+$hamburger-padding-y: 15px !default;
+$hamburger-layer-width: 40px !default;
+$hamburger-layer-height: 4px !default;
+$hamburger-layer-spacing: 6px !default;
+$hamburger-layer-color: $c-white !default;
+$hamburger-layer-border-radius: 0 !default;
+$hamburger-hover-opacity: 1 !default;
+$hamburger-hover-transition-duration: .15s !default;
+$hamburger-hover-transition-timing-function: linear !default;

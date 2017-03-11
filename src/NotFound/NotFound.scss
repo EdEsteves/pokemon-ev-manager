@@ -1,0 +1,24 @@
+@import '../scss/all';
+
+.NotFound {
+  background: $c-404 url(./404.jpg) no-repeat right center;
+  background-size: contain;
+
+  &__title {
+    @include fluid-type(font-size, $v-xs, $v-lg, 3em, 6em);
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: $c-white;
+    text-transform: uppercase;
+
+    @media screen and (min-width: $v-md) {
+      margin-bottom: .5em;
+    }
+  }
+
+  &__text {
+    @include fluid-type(font-size, $v-xs, $v-lg, 1.3em, 2.5em);
+    width: 60%;
+    color: $c-white;
+  }
+}

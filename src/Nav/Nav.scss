@@ -1,0 +1,27 @@
+@import '../scss/all';
+
+.Nav {
+  background: $c-red-alt;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &__list {
+    @include fluid-type(font-size, $v-xs, $v-lg, 1em, 1.2em);
+  }
+
+  &__item {
+    display: block;
+
+    &.is-active {
+      background: $c-red;
+    }
+  }
+
+  &__anchor {
+    display: block;
+    padding: 1em;
+    color: $c-white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

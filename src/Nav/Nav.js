@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import './Nav.css';
+
 class Nav extends Component {
   constructor(props) {
     super(props);
@@ -13,11 +15,12 @@ class Nav extends Component {
   goTo(e) {
     e.preventDefault();
     const pathname = e.currentTarget.dataset.href;
-    // console.log(pathname);
     this.context.router.transitionTo(pathname);
   }
 
   render() {
+    console.log(this.context);
+
     return (
       <nav className="Nav" id="navigation">
         <ul className="Nav__list unstyled">
@@ -25,7 +28,7 @@ class Nav extends Component {
             <a data-href="/" className="Nav__anchor" onClick={this.goTo}>Home</a>
           </li>
           <li className="Nav__item">
-            <a data-href="" className="Nav__anchor" onClick={this.goTo}></a>
+            <a data-href="" className="Nav__anchor" onClick={this.goTo}>Manage Training</a>
           </li>
           <li className="Nav__item">
             <a data-href="/about" className="Nav__anchor" onClick={this.goTo}>About</a>

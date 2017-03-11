@@ -1,10 +1,22 @@
+@import '../scss/all';
+
 .Header {
+  position: relative;
   text-align: center;
-  background: #222;
+  background: $c-gray-dark;
 
   &__title {
+    @include fluid-type(font-size, $v-xs, $v-lg, 1.3em, 2.5em);
     margin: 0;
-    padding: 1.5em 0;
-    color: #fff;
+    padding: 1em 0;
+    color: $c-white;
+  }
+
+  &__btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 54px;
+    transform: translateY(-50%);
   }
 }
