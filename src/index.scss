@@ -11,5 +11,10 @@ body {
 }
 
 .main-content {
+  padding: 5vmin;
   flex: 1;
+
+  &--fixed {
+    max-width: 60vw;
+  }
 }

@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-import './About.css';
+import './About.scss';
 
 class About extends Component {
   render() {
     return (
       <div className="About primary-component">
         <Header/>
-        <div className="main-content">
+        <div className="main-content main-content--fixed">
           <h2 className="About__title">About</h2>
 
           <h3 className="About__subtitle">What is this application?</h3>
