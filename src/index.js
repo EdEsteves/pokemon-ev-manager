@@ -6,7 +6,7 @@ import Home from './Home/Home';
 import About from './About/About';
 import App from './App/App';
 
-import './index.scss';
+import './index.css';
 
 const Root = () => {
   return (

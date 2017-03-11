@@ -1,9 +1,9 @@
-.About {}
+.About {
+  &__title {}
 
-.About__title {}
+  &__subtitle {}
 
-.About__subtitle {}
+  &__text {}
 
-.About__text {}
-
-.About__anchor {}
+  &__anchor {}
+}

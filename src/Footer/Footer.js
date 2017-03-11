@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Footer.scss';
+import './Footer.css';
 
 const pkgJson = require('../../package.json');
 
