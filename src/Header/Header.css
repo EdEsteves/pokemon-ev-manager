@@ -2,24 +2,20 @@
   position: relative;
   text-align: center;
   background: #222224; }
-
-.Header__title {
-  font-size: 1.3em;
-  margin: 0;
-  padding: 1em 0;
-  color: #fff; }
-
-@media screen and (min-width: 25em) {
   .Header__title {
-    font-size: calc(1.3em + 1.2 * (100vw - 25em) / 50); } }
-
-@media screen and (min-width: 75em) {
-  .Header__title {
-    font-size: 2.5em; } }
-
-.Header__btn {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  height: 54px;
-  transform: translateY(-50%); }
+    font-size: 1.3em;
+    margin: 0;
+    padding: 1em 0;
+    color: #fff; }
+    @media screen and (min-width: 25em) {
+      .Header__title {
+        font-size: calc(1.3em + 1.2 * (100vw - 25em) / 50); } }
+    @media screen and (min-width: 75em) {
+      .Header__title {
+        font-size: 2.5em; } }
+  .Header__btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 54px;
+    transform: translateY(-50%); }

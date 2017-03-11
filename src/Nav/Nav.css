@@ -2,34 +2,27 @@
   background: #f0f0f0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; }
-
-.Nav__list {
-  font-size: 1em; }
-
-@media screen and (min-width: 25em) {
   .Nav__list {
-    font-size: calc(1em + 0.2 * (100vw - 25em) / 50); } }
-
-@media screen and (min-width: 75em) {
-  .Nav__list {
-    font-size: 1.2em; } }
-
-.Nav__item {
-  display: block; }
-
-.Nav__item.is-active {
-  color: #fff;
-  background: #f00; }
-
-.Nav__anchor {
-  display: block;
-  padding: 1em;
-  color: #222224;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all .2s ease; }
-
-@media screen and (min-width: 62em) {
-  .Nav__anchor:hover {
-    color: #fff;
-    background: #ee1515; } }
+    font-size: 1em; }
+    @media screen and (min-width: 25em) {
+      .Nav__list {
+        font-size: calc(1em + 0.2 * (100vw - 25em) / 50); } }
+    @media screen and (min-width: 75em) {
+      .Nav__list {
+        font-size: 1.2em; } }
+  .Nav__item {
+    display: block; }
+    .Nav__item.is-active {
+      color: #fff;
+      background: #f00; }
+  .Nav__anchor {
+    display: block;
+    padding: 1em;
+    color: #222224;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .2s ease; }
+    @media screen and (min-width: 62em) {
+      .Nav__anchor:hover {
+        color: #fff;
+        background: #ee1515; } }
