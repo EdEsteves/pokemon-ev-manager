@@ -12,9 +12,6 @@ class App extends Component {
 
     this.state = {
       apiData: null,
-      apiLoadedAllItems: false,
-      user: null,
-      userIsLoggedIn: false,
     }
 
     // Scope binding to component methods that require `this`
@@ -96,8 +93,7 @@ class App extends Component {
   render() {
     return (
       <div className="App main-content">
-        <SearchForm data={this.state.apiData} />
-        {this.state.apiData.map((data) => <p>{data.name}</p>)}
+        <SearchForm />
       </div>
     );
   }
