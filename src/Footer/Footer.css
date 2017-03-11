@@ -3,21 +3,17 @@
   padding: 1.5em 1em;
   text-align: center;
   border-top: 1px solid #ccc; }
-
-.Footer__credits {
-  margin: 0;
-  font-size: .8em; }
-
-.Footer__credits-icon {
-  display: inline-block;
-  margin-right: 3px; }
-
-.Footer__version {
-  display: inline-block;
-  font-weight: bold; }
-
-.Footer__version::after {
-  content: '-';
-  display: inline-block;
-  margin: 0 3px;
-  font-weight: normal; }
+  .Footer__credits {
+    margin: 0;
+    font-size: .8em; }
+  .Footer__credits-icon {
+    display: inline-block;
+    margin-right: 3px; }
+  .Footer__version {
+    display: inline-block;
+    font-weight: bold; }
+    .Footer__version::after {
+      content: '-';
+      display: inline-block;
+      margin: 0 3px;
+      font-weight: normal; }
