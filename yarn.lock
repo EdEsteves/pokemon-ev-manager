@@ -229,6 +229,10 @@ autoprefixer@6.7.2, autoprefixer@^6.3.1:
     postcss "^5.2.11"
     postcss-value-parser "^3.2.3"
 
+awesomplete@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/awesomplete/-/awesomplete-1.1.1.tgz#460c2045d5c3f584f36295be20645b5ccdc860ab"
+
 aws-sign2@~0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"
@@ -5191,6 +5195,10 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
+
+sweetalert@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/sweetalert/-/sweetalert-1.1.3.tgz#d2c31ea492b22b6a8d887aea15989a238fc084ae"
 
 symbol-tree@^3.2.1:
   version "3.2.2"

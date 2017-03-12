@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 
 import SearchForm from '../SearchForm/SearchForm';
-import Pokemon from '../Pokemon/Pokemon';
+import PokemonList from '../PokemonList/PokemonList';
+
+import swal from 'sweetalert';
+
+const pokemonList = require('../pokemonList.json');
 
 import './App.css';
 
@@ -11,11 +15,17 @@ class App extends Component {
     this.displayName = 'EV Manager'
 
     this.state = {
-      apiData: null,
+      userPokemonList: [],
     }
 
     // Scope binding to component methods that require `this`
     this.getApiData = this.getApiData.bind(this);
+    this.addPokemonToUserList = this.addPokemonToUserList.bind(this);
+    this.removePokemonFromUserList = this.removePokemonFromUserList.bind(this);
+  }
+
+  static defaultProps = {
+    pokemonList: pokemonList.pokemon,
   }
 
   /**
@@ -23,11 +33,8 @@ class App extends Component {
    * @param {String} [url] URL for request data
    */
   getApiData(url = `https://pokeapi.co/api/v2/pokemon/?limit=100`) {
-    const { apiCurrentPage } = this.state;
     let { apiData, apiLoadedAllItems } = this.state;
     const storage = sessionStorage.getItem('pokeApiData');
-
-    console.log(url);
 
     /**
      * Verify if we already brought the data and have it storaged locally
@@ -37,7 +44,6 @@ class App extends Component {
     if (storage && apiLoadedAllItems) {
       this.setState({
         apiData: JSON.parse(storage),
-        apiLoadedAllItems: true,
       });
     }
     else {
@@ -86,14 +92,57 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    // this.getApiData();
+  addPokemonToUserList(pokemonName) {
+    const { userPokemonList } = this.state;
+    const { pokemonList } = this.props;
+    const pokemonIndex = pokemonList.findIndex(pokemon => pokemonName === pokemon.label);
+
+    userPokemonList.push({
+      url: pokemonList[pokemonIndex].url,
+      name: pokemonList[pokemonIndex].label,
+      id: `${pokemonList[pokemonIndex].label}:${Date.now()}`,
+    });
+
+    this.setState({ userPokemonList });
   }
+
+  removePokemonFromUserList(pokemonToRemove) {
+    swal({
+      type: 'warning',
+      title: 'Are you sure?',
+      text: `All the progress you've made with ${pokemonToRemove.name} will be lost.`,
+      showCancelButton: true,
+      confirmButtonColor: '#ee1515',
+      confirmButtonText: `Yes, remove ${pokemonToRemove.name}`,
+      cancelButtonText: `No, keep it`,
+    }, confirm => {
+      if (confirm) {
+        const { userPokemonList } = this.state;
+        const index = userPokemonList.findIndex(pokemon => pokemon.id === pokemonToRemove.id);
+
+        userPokemonList.splice(index, 1);
+
+        this.setState({ userPokemonList });
+      }
+    });
+  }
+
+  // componentDidMount() {
+  //   this.getApiData();
+  // }
 
   render() {
     return (
       <div className="App main-content">
-        <SearchForm />
+        <SearchForm
+          ref="searchForm"
+          data={this.props.pokemonList}
+          addPokemonToUserList={this.addPokemonToUserList}
+        />
+        <PokemonList
+          userPokemonList={this.state.userPokemonList}
+          removePokemonFromUserList={this.removePokemonFromUserList}
+        />
       </div>
     );
   }

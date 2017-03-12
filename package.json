@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": false,
   "devDependencies": {
+    "awesomplete": "^1.1.1",
     "hamburgers": "^0.7.0",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.2",
     "react-scripts": "0.9.0",
-    "slideout": "^1.0.1"
+    "slideout": "^1.0.1",
+    "sweetalert": "^1.1.3"
   },
   "dependencies": {
     "react": "^15.4.2",
