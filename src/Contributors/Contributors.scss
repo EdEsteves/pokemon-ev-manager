@@ -1,0 +1,27 @@
+@import '../scss/all';
+
+.Contributors {
+  &__title {
+    @include fluid-type(font-size, $v-xs, $v-sm, 2em, 3em);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  &__subtitle {
+    @include fluid-type(font-size, $v-xs, $v-sm, 1.5em, 2em);
+    margin: 1em 0;
+    line-height: 1.2;
+  }
+
+  &__text {
+    @include fluid-type(font-size, $v-xs, $v-sm, 1em, 1.5em);
+    margin: 1em 0;
+  }
+
+  &__list {
+    @include fluid-type(font-size, $v-xs, $v-sm, 1em, 1.5em);
+    margin: 1em 0;
+  }
+
+  // &__anchor {}
+}

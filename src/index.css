@@ -1539,6 +1539,7 @@ a {
   flex-direction: column; }
 
 .main-content {
+  width: 100%;
   padding: 5vmin;
   flex: 1; }
 

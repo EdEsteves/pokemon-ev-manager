@@ -8,6 +8,7 @@ import Footer from './Footer/Footer';
 import Nav from './Nav/Nav';
 import Home from './Home/Home';
 import About from './About/About';
+import Contributors from './Contributors/Contributors';
 import App from './App/App';
 import NotFound from './NotFound/NotFound';
 
@@ -23,6 +24,7 @@ class Root extends Component {
             <Header />
             <Match exactly pattern="/" component={Home} />
             <Match exactly pattern="/about" component={About} />
+            <Match exactly pattern="/contributors" component={Contributors} />
             <Match pattern="/app/:userId" component={App} />
             {<Miss component={NotFound} />}
             <Footer />
