@@ -18,7 +18,7 @@ class About extends Component {
 
         <h3 className="About__subtitle">I'm a developer and want to contribute to this project. How can I do that?</h3>
         <ol className="About__list">
-          <li className="About__item">Fork <a href="//github.com/guilhermemarconi/pokemon-ev-management" className="About__anchor" target="_blank">this repo</a>;</li>
+          <li className="About__item">Fork <a href="//github.com/guilhermemarconi/pokemon-ev-manager" className="About__anchor" target="_blank">this repo</a>;</li>
           <li className="About__item">Code as much as you want; 🤘</li>
           <li className="About__item">Create a <abbr title="Pull Request">PR</abbr> and I will analyse what you did.</li>
         </ol>

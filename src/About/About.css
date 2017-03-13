@@ -2,40 +2,48 @@
   font-size: 2em;
   margin: 0 0 1em;
   line-height: 1.5; }
-  @media screen and (min-width: 25em) {
-    .About__title {
-      font-size: calc(2em + 1 * (100vw - 25em) / 23); } }
-  @media screen and (min-width: 48em) {
-    .About__title {
-      font-size: 3em; } }
+
+@media screen and (min-width: 25em) {
+  .About__title {
+    font-size: calc(2em + 1 * (100vw - 25em) / 23); } }
+
+@media screen and (min-width: 48em) {
+  .About__title {
+    font-size: 3em; } }
 
 .About__subtitle {
   font-size: 1.5em;
   margin: 1em 0;
   line-height: 1.2; }
-  @media screen and (min-width: 25em) {
-    .About__subtitle {
-      font-size: calc(1.5em + 0.5 * (100vw - 25em) / 23); } }
-  @media screen and (min-width: 48em) {
-    .About__subtitle {
-      font-size: 2em; } }
+
+@media screen and (min-width: 25em) {
+  .About__subtitle {
+    font-size: calc(1.5em + 0.5 * (100vw - 25em) / 23); } }
+
+@media screen and (min-width: 48em) {
+  .About__subtitle {
+    font-size: 2em; } }
 
 .About__text {
   font-size: 1em;
   margin: 1em 0; }
-  @media screen and (min-width: 25em) {
-    .About__text {
-      font-size: calc(1em + 0.5 * (100vw - 25em) / 23); } }
-  @media screen and (min-width: 48em) {
-    .About__text {
-      font-size: 1.5em; } }
+
+@media screen and (min-width: 25em) {
+  .About__text {
+    font-size: calc(1em + 0.5 * (100vw - 25em) / 23); } }
+
+@media screen and (min-width: 48em) {
+  .About__text {
+    font-size: 1.5em; } }
 
 .About__list {
   font-size: 1em;
   margin: 1em 0; }
-  @media screen and (min-width: 25em) {
-    .About__list {
-      font-size: calc(1em + 0.5 * (100vw - 25em) / 23); } }
-  @media screen and (min-width: 48em) {
-    .About__list {
-      font-size: 1.5em; } }
+
+@media screen and (min-width: 25em) {
+  .About__list {
+    font-size: calc(1em + 0.5 * (100vw - 25em) / 23); } }
+
+@media screen and (min-width: 48em) {
+  .About__list {
+    font-size: 1.5em; } }
