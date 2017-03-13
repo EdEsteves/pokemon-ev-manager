@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import PokemonList from '../PokemonList/PokemonList';
 
+import base from '../base';
 import swal from 'sweetalert';
 
 const pokemonList = require('../pokemonList.json');
@@ -10,18 +11,19 @@ const pokemonList = require('../pokemonList.json');
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.displayName = 'EV Manager'
 
     this.state = {
-      userPokemonList: [],
+      userPokemonList: {},
     }
 
     // Scope binding to component methods that require `this`
     this.getApiData = this.getApiData.bind(this);
     this.addPokemonToUserList = this.addPokemonToUserList.bind(this);
     this.removePokemonFromUserList = this.removePokemonFromUserList.bind(this);
+    this.updateUserPokemonData = this.updateUserPokemonData.bind(this);
   }
 
   static defaultProps = {
@@ -97,7 +99,12 @@ class App extends Component {
     const { pokemonList } = this.props;
     const pokemonIndex = pokemonList.findIndex(pokemon => pokemonName === pokemon.label);
 
-    userPokemonList.push({
+    if (!userPokemonList.pokemon) {
+      userPokemonList.pokemon = [];
+    }
+
+    // userPokemonList[`${pokemonName}:${Date.now()}`] = {
+    userPokemonList.pokemon.push({
       url: pokemonList[pokemonIndex].url,
       name: pokemonList[pokemonIndex].label,
       id: `${pokemonList[pokemonIndex].label}:${Date.now()}`,
@@ -117,19 +124,30 @@ class App extends Component {
       cancelButtonText: `No, keep it`,
     }, confirm => {
       if (confirm) {
-        const { userPokemonList } = this.state;
-        const index = userPokemonList.findIndex(pokemon => pokemon.id === pokemonToRemove.id);
+        let { userPokemonList } = this.state;
+        const i = userPokemonList.pokemon.findIndex(pokemon => pokemon.id === pokemonToRemove.id);
 
-        userPokemonList.splice(index, 1);
+        userPokemonList.pokemon.splice(i, 1);
 
         this.setState({ userPokemonList });
       }
     });
   }
 
-  // componentDidMount() {
-  //   this.getApiData();
-  // }
+  updateUserPokemonData(newState) {
+    this.setState(newState);
+  }
+
+  componentWillMount() {
+    this.ref = base.syncState(`${this.props.params.userId}/userPokemonList`, {
+      context: this,
+      state: 'userPokemonList',
+    });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
 
   render() {
     return (
@@ -140,8 +158,10 @@ class App extends Component {
           addPokemonToUserList={this.addPokemonToUserList}
         />
         <PokemonList
+          currentUser={this.props.params.userId}
           userPokemonList={this.state.userPokemonList}
           removePokemonFromUserList={this.removePokemonFromUserList}
+          updateUserPokemonData={this.updateUserPokemonData}
         />
       </div>
     );

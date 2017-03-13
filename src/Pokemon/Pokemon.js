@@ -8,7 +8,6 @@ class Pokemon extends Component {
     this.displayName = 'Pokémon';
 
     this.state = {
-      pokemon: null,
       isLoaded: false,
     };
 
@@ -18,19 +17,27 @@ class Pokemon extends Component {
 
   removePokemon(e) {
     e.preventDefault();
-    this.props.removePokemonFromUserList(this.props.data);
+    this.props.removePokemonFromUserList(this.props.pokemon);
   }
 
   getPokemonData() {
-    fetch(this.props.data.url)
-      .then(res => res.json())
-      .then(pokemon => {
-        this.setState({
-          pokemon,
-          isLoaded: true,
-        });
-      })
-      .catch(err => console.error(err));
+    if (this.props.pokemon.data) {
+      this.setState({ isLoaded: true });
+    }
+    else {
+      fetch(this.props.pokemon.url)
+        .then(res => res.json())
+        .then(data => {
+          const { pokemon, userPokemonList } = this.props;
+          const i = userPokemonList.pokemon.findIndex(item => item.id === pokemon.id);
+
+          userPokemonList.pokemon[i].data = data;
+
+          this.props.updateUserPokemonData({ userPokemonList });
+          this.setState({ isLoaded: true });
+        })
+        .catch(err => console.error(err));
+    }
   }
 
   formatName(name) {
@@ -60,15 +67,15 @@ class Pokemon extends Component {
   }
 
   render() {
-    const { pokemon, isLoaded } = this.state;
-    const { data } = this.props;
+    const { isLoaded } = this.state;
+    const { pokemon } = this.props;
     const name = pokemon ? this.formatName(pokemon.name) : null;
 
     if (!isLoaded) {
       return (
         <div className="Pokemon is-loading">
           <button onClick={this.removePokemon}>Remove</button>
-          <p>Loading {data.name}...</p>
+          <p>Loading {pokemon.name}...</p>
         </div>
       );
     }
@@ -76,7 +83,7 @@ class Pokemon extends Component {
     return (
       <div className="Pokemon">
         <button onClick={this.removePokemon}>Remove</button>
-        <img src={pokemon.sprites.front_default} alt={name}/>
+        <img src={pokemon.data.sprites.front_default} alt={name}/>
         <p>{name}</p>
       </div>
     );
