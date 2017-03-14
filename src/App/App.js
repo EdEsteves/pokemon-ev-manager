@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import SearchForm from '../SearchForm/SearchForm';
 import PokemonList from '../PokemonList/PokemonList';
@@ -28,6 +28,23 @@ class App extends Component {
 
   static defaultProps = {
     pokemonList: pokemonList.pokemon,
+  }
+
+  static contextTypes = {
+    router: PropTypes.object,
+  }
+
+  componentWillMount() {
+    this.ref = base.syncState(`${this.props.params.userId}/userPokemonList`, {
+      context: this,
+      state: 'userPokemonList',
+    });
+  }
+
+  componentDidMount() {}
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   }
 
   /**
@@ -138,20 +155,15 @@ class App extends Component {
     this.setState(newState);
   }
 
-  componentWillMount() {
-    this.ref = base.syncState(`${this.props.params.userId}/userPokemonList`, {
-      context: this,
-      state: 'userPokemonList',
-    });
-  }
-
-  componentWillUnmount() {
-    base.removeBinding(this.ref);
+  logout(e) {
+    base.unauth();
+    this.context.router.transitionTo('/app');
   }
 
   render() {
     return (
       <div className="App main-content">
+        <button className="App__logout" type="button" onClick={(e) => this.logout(e)}>Logout</button>
         <SearchForm
           ref="searchForm"
           data={this.props.pokemonList}

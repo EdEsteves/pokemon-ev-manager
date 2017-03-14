@@ -20,6 +20,8 @@ class Nav extends Component {
   }
 
   render() {
+    const { user } = this.props.rootState;
+
     return (
       <nav className="Nav" id="navigation">
         <ul className="Nav__list unstyled">
@@ -27,7 +29,7 @@ class Nav extends Component {
             <a data-href="/" className="Nav__anchor" onClick={this.goTo}>Home</a>
           </li>
           <li className="Nav__item">
-            <a data-href="" className="Nav__anchor" onClick={this.goTo}>Manage Training</a>
+            <a data-href={user.id ? `/app/${user.id}` : '/app'} className="Nav__anchor" onClick={this.goTo}>Manage Training</a>
           </li>
           <li className="Nav__item">
             <a data-href="/about" className="Nav__anchor" onClick={this.goTo}>About</a>
