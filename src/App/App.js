@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-
 import SearchForm from '../SearchForm/SearchForm';
 import PokemonList from '../PokemonList/PokemonList';
-
-import base from '../base';
 import swal from 'sweetalert';
+import base from '../base';
 
 const pokemonList = require('../pokemonList.json');
 
@@ -92,14 +90,17 @@ class App extends Component {
       cancelButtonText: `No, keep it`,
     }, confirm => {
       if (confirm) {
-        let { userPokemonList } = this.state;
-        // const i = userPokemonList.pokemon.findIndex(pokemon => pokemon.id === pokemonToRemove.id);
+        const { userPokemonList } = this.state;
+        const pokemonRef = base.database().ref();
 
-        // userPokemonList.pokemon.splice(i, 1);
-        delete userPokemonList[pokemonToRemove.id];
-        console.log(userPokemonList);
+        pokemonRef.once('value', (pokemon) => {
+          const data = pokemon.val() || {};
+          const { rootState } = this.context;
 
-        this.setState({ userPokemonList });
+          delete userPokemonList[pokemonToRemove.id];
+          data[rootState.user.id].userPokemonList = userPokemonList;
+          pokemonRef.set(data);
+        });
       }
     });
   }

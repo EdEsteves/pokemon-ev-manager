@@ -34,9 +34,8 @@
   height: 1px;
   margin: 10vmin 0;
   background: #f0f0f0; }
-
-@media screen and (min-width: 48em) {
-  .Auth__divisor {
-    width: 1px;
-    height: auto;
-    margin: 0; } }
+  @media screen and (min-width: 48em) {
+    .Auth__divisor {
+      width: 1px;
+      height: auto;
+      margin: 0; } }

@@ -53,19 +53,21 @@ class Pokemon extends Component {
     if (name === 'floette-eternal') {
       return 'eternal floette';
     }
-    else if (~name.indexOf('mega')) {
-      let nameArr = name.split('-');
+    else if (~name.indexOf('-')) {
+      const nameArr = name.split('-');
 
-      if (nameArr.lengh === 3) {
-        return `mega ${nameArr[0]} ${nameArr[2]}`;
+      if (~name.indexOf('mega')) {
+        if (nameArr.lengh === 3) {
+          return `mega ${nameArr[0]} ${nameArr[2]}`;
+        }
+
+        return `mega ${nameArr[0]}`;
+      }
+      else if (~name.indexOf('primal')) {
+        return `primal ${nameArr[0]}`;
       }
 
-      return `mega ${nameArr[0]}`;
-    }
-    else if (~name.indexOf('primal')) {
-      let nameArr = name.split('-');
-
-      return `primal ${nameArr[0]}`;
+      return nameArr.join(' ');
     }
 
     return name;
@@ -88,7 +90,7 @@ class Pokemon extends Component {
     return (
       <div className="Pokemon">
         <button onClick={this.removePokemon}>Remove</button>
-        <img src={pokemon.data.sprites.front_default} alt={name}/>
+        <img src={pokemon.data.sprites.front_default ? pokemon.data.sprites.front_default : null } alt={name}/>
         <p>{name}</p>
       </div>
     );
