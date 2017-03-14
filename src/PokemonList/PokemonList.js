@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import Pokemon from '../Pokemon/Pokemon';
 
@@ -12,18 +12,30 @@ class PokemonList extends Component {
     this.renderPokemon = this.renderPokemon.bind(this);
   }
 
-  renderPokemon() {
-    const { userPokemonList, currentUser, removePokemonFromUserList, updateUserPokemonData } = this.props;
+  static contextTypes = {
+    removePokemonFromUserList: PropTypes.func,
+    updateUserPokemonData: PropTypes.func,
+  }
 
-    if (userPokemonList.pokemon) {
-      return userPokemonList.pokemon.map(pokemon => <Pokemon
-        key={pokemon.id}
-        pokemon={pokemon}
-        userPokemonList={userPokemonList}
-        currentUser={currentUser}
-        removePokemonFromUserList={removePokemonFromUserList}
-        updateUserPokemonData={updateUserPokemonData}
-      />);
+  renderPokemon() {
+    const { userPokemonList, currentUser } = this.props;
+    const { removePokemonFromUserList, updateUserPokemonData } = this.context;
+    const pokemonList = Object.keys(userPokemonList);
+    console.log(userPokemonList, pokemonList);
+
+    if (pokemonList.length) {
+      return pokemonList.map(pokemon => {
+        return (
+          <Pokemon
+            key={userPokemonList[pokemon].id}
+            pokemon={userPokemonList[pokemon]}
+            userPokemonList={userPokemonList}
+            currentUser={currentUser}
+            removePokemonFromUserList={removePokemonFromUserList}
+            updateUserPokemonData={updateUserPokemonData}
+          />
+        )
+      });
     }
 
     return (

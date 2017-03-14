@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import Awesomplete from 'awesomplete';
 
@@ -11,12 +11,8 @@ class SearchForm extends Component {
     this.addPokemon = this.addPokemon.bind(this);
   }
 
-  addPokemon(e) {
-    e.preventDefault();
-    const { searchInput } = this.refs;
-
-    this.props.addPokemonToUserList(searchInput.value);
-    searchInput.value = '';
+  static contextTypes = {
+    addPokemonToUserList: PropTypes.func,
   }
 
   componentDidMount() {
@@ -25,6 +21,14 @@ class SearchForm extends Component {
       minChars: 3,
       autoFirst: true,
     });
+  }
+
+  addPokemon(e) {
+    e.preventDefault();
+    const { searchInput } = this.refs;
+
+    this.context.addPokemonToUserList(searchInput.value);
+    searchInput.value = '';
   }
 
   render() {

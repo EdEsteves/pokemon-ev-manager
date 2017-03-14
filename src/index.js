@@ -20,7 +20,6 @@ class Root extends Component {
     super(props, context);
 
     this.state = {
-      loggedIn: false,
       user: {},
     }
     this.updateRootState = this.updateRootState.bind(this);

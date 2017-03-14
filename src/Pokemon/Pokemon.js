@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import './Pokemon.css';
 
@@ -15,28 +15,37 @@ class Pokemon extends Component {
     this.getPokemonData = this.getPokemonData.bind(this);
   }
 
+  static contextTypes = {
+    removePokemonFromUserList: PropTypes.func,
+  }
+
+  componentDidMount() {
+    this.getPokemonData();
+  }
+
   removePokemon(e) {
     e.preventDefault();
-    this.props.removePokemonFromUserList(this.props.pokemon);
+    this.context.removePokemonFromUserList(this.props.pokemon);
   }
 
   getPokemonData() {
-    if (this.props.pokemon.data) {
-      this.setState({ isLoaded: true });
-    }
-    else {
-      fetch(this.props.pokemon.url)
-        .then(res => res.json())
-        .then(data => {
-          const { pokemon, userPokemonList } = this.props;
-          const i = userPokemonList.pokemon.findIndex(item => item.id === pokemon.id);
+    if (!this.state.isLoaded) {
+      if (this.props.pokemon.data) {
+        this.setState({ isLoaded: true });
+      }
+      else {
+        fetch(this.props.pokemon.url)
+          .then(res => res.json())
+          .then(data => {
+            const { pokemon, userPokemonList } = this.props;
 
-          userPokemonList.pokemon[i].data = data;
+            userPokemonList[pokemon.id].data = data;
 
-          this.props.updateUserPokemonData({ userPokemonList });
-          this.setState({ isLoaded: true });
-        })
-        .catch(err => console.error(err));
+            this.props.updateUserPokemonData({ userPokemonList });
+            this.setState({ isLoaded: true });
+          })
+          .catch(err => console.error(err));
+      }
     }
   }
 
@@ -60,10 +69,6 @@ class Pokemon extends Component {
     }
 
     return name;
-  }
-
-  componentDidMount() {
-    this.getPokemonData();
   }
 
   render() {
